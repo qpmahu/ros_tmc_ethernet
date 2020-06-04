@@ -1,0 +1,11 @@
+/DATA/
+/ECAD/
+/MCAD/
+/PROG/ros_ethernet_motor.X/nbproject/private/
+/PROG/ros_ethernet_motor.X/nbproject/*.mk
+/PROG/ros_ethernet_motor.X/nbproject/*.bash
+/PROG/ros_ethernet_motor.X/SPI_UART.mc3.bak
+/PROG/ros_ethernet_motor.X/debug/
+/PROG/ros_ethernet_motor.X/build/
+/PROG/ros_ethernet_motor.X/dist/
+/PROG/AN1921_Source Code/
