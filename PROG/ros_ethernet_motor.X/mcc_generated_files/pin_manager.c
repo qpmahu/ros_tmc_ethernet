@@ -13,7 +13,7 @@
   Description:
     This header file provides implementations for pin APIs for all pins selected in the GUI.
     Generation Information :
-        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.2
+        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.4
         Device            :  PIC18F24K50
         Driver Version    :  2.11
     The generated drivers are tested against the following:
@@ -65,14 +65,14 @@ void PIN_MANAGER_Initialize(void)
     TRISx registers
     */
     TRISA = 0xFF;
-    TRISB = 0xF9;
-    TRISC = 0x85;
+    TRISB = 0xF1;
+    TRISC = 0xC7;
 
     /**
     ANSELx registers
     */
-    ANSELC = 0x00;
-    ANSELB = 0x38;
+    ANSELC = 0xC4;
+    ANSELB = 0x30;
     ANSELA = 0x2F;
 
     /**

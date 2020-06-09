@@ -13,7 +13,7 @@
   @Description:
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.2
+        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.4
         Device            :  PIC18F24K50
         Driver Version    :  2.00
     The generated drivers are tested against the following:
@@ -54,12 +54,7 @@ void SYSTEM_Initialize(void)
     SPI1_Initialize();
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
-    ECCP1_Initialize();
-    PWM2_Initialize();
-    TMR3_Initialize();
-    TMR2_Initialize();
     TMR1_Initialize();
-    EUSART1_Initialize();
     Network_Init();
 }
 

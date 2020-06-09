@@ -1,0 +1,11 @@
+HW:
+TMC2208 (1)PWM, (2)EN, (3)DIR, (5)UART
+ENC28J60 SPI, Ethernet Link (ROS TCP,ROS UDP)
+
+Alle HW-Konfig und Bus funktionen aus MCC generiert.
+ROS Packages als feste Tabellen
+SPI Packages als Funktionen? -> Studium MCC Bibliothek notwendig.
+PWM DutyCycle berechnung notwendig -> Funktion aus anderem Projekt/Neu schreiben
+EN "=" Not-Halt
+DIR aus ROS
+UART Packages als Funktionen / Init- bzw. Config-funktion?

@@ -13,7 +13,7 @@
   @Description:
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.2
+        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.4
         Device            :  PIC18F24K50
         Driver Version    :  2.00
     The generated drivers are tested against the following:
@@ -50,7 +50,7 @@
 #pragma config PLLSEL = PLL3X    // PLL Selection->3x clock multiplier
 #pragma config CFGPLLEN = ON    // PLL Enable Configuration bit->PLL Enabled
 #pragma config CPUDIV = NOCLKDIV    // CPU System Clock Postscaler->CPU uses system clock (no divide)
-#pragma config LS48MHZ = SYS48X8    // Low Speed USB mode with 48 MHz system clock->System clock at 48 MHz, USB clock divider is set to 8
+#pragma config LS48MHZ = SYS24X4    // Low Speed USB mode with 48 MHz system clock->System clock at 24 MHz, USB clock divider is set to 4
 
 // CONFIG1H
 #pragma config FOSC = INTOSCIO    // Oscillator Selection->Internal oscillator
@@ -70,14 +70,14 @@
 
 // CONFIG3H
 #pragma config CCP2MX = RC1    // CCP2 MUX bit->CCP2 input/output is multiplexed with RC1
-#pragma config PBADEN = OFF    // PORTB A/D Enable bit->PORTB<5:0> pins are configured as digital I/O on Reset
+#pragma config PBADEN = ON    // PORTB A/D Enable bit->PORTB<5:0> pins are configured as analog input channels on Reset
 #pragma config T3CMX = RC0    // Timer3 Clock Input MUX bit->T3CKI function is on RC0
 #pragma config SDOMX = RB3    // SDO Output MUX bit->SDO function is on RB3
 #pragma config MCLRE = ON    // Master Clear Reset Pin Enable->MCLR pin enabled; RE3 input disabled
 
 // CONFIG4L
 #pragma config STVREN = ON    // Stack Full/Underflow Reset->Stack full/underflow will cause Reset
-#pragma config LVP = ON    // Single-Supply ICSP Enable bit->Single-Supply ICSP enabled if MCLRE is also 1
+#pragma config LVP = OFF    // Single-Supply ICSP Enable bit->Single-Supply ICSP disabled
 #pragma config ICPRT = OFF    // Dedicated In-Circuit Debug/Programming Port Enable->ICPORT disabled
 #pragma config XINST = OFF    // Extended Instruction Set Enable bit->Instruction set extension and Indexed Addressing mode disabled
 #pragma config DEBUG = OFF    // Background Debugger Enable bit->Background debugger disabled, RB6 and RB7 configured as general purpose I/O pins

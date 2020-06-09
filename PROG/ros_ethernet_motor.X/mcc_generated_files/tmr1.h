@@ -13,7 +13,7 @@
   @Description
     This header file provides APIs for driver for TMR1.
     Generation Information :
-        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.2
+        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.4
         Device            :  PIC18F24K50
         Driver Version    :  2.01
     The generated drivers are tested against the following:
@@ -60,7 +60,7 @@
 
 #endif
 
-#define TMR1_INTERRUPT_TICKER_FACTOR    100
+#define TMR1_INTERRUPT_TICKER_FACTOR    30
 
 /**
   Section: TMR1 APIs

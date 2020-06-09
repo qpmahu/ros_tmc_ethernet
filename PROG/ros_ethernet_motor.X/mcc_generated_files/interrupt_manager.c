@@ -15,7 +15,7 @@
     For individual peripheral handlers please see the peripheral driver for
     all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.2
+        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.4
         Device            :  PIC18F24K50
         Driver Version    :  2.03
     The generated drivers are tested against the following:
@@ -63,14 +63,6 @@ void __interrupt() INTERRUPT_InterruptManager (void)
         if(PIE1bits.TMR1IE == 1 && PIR1bits.TMR1IF == 1)
         {
             TMR1_ISR();
-        } 
-        else if(PIE1bits.TX1IE == 1 && PIR1bits.TX1IF == 1)
-        {
-            EUSART1_TxDefaultInterruptHandler();
-        } 
-        else if(PIE1bits.RC1IE == 1 && PIR1bits.RC1IF == 1)
-        {
-            EUSART1_RxDefaultInterruptHandler();
         } 
         else
         {

@@ -13,7 +13,7 @@
   @Description:
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.2
+        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.4
         Device            :  PIC18F24K50
         Driver Version    :  2.00
     The generated drivers are tested against the following:
@@ -54,15 +54,9 @@
 #include <conio.h>
 #include "interrupt_manager.h"
 #include "spi1.h"
-#include "tmr3.h"
 #include "tmr1.h"
-#include "tmr2.h"
-#include "pwm2.h"
-#include "eccp1.h"
-#include "memory.h"
-#include "eusart1.h"
-#include "drivers/spi_master.h"
 #include "TCPIPLibrary/network.h"
+#include "drivers/spi_master.h"
 
 
 
