@@ -1,0 +1,3 @@
+HW:
+TMC2208 (1)PWM, (2)EN, (3)DIR, (5)UART
+ENC28J60 SPI, Ethernet Link (ROS TCP,ROS UDP)

@@ -18619,9 +18619,9 @@ bei BUS-Problemen</text>
 <instance part="GND7" gate="G$1" x="78.74" y="96.52" smashed="yes">
 <attribute name="VALUE" x="76.2" y="93.98" size="1.778" layer="96"/>
 </instance>
-<instance part="R5" gate="G$1" x="58.42" y="22.86" smashed="yes">
-<attribute name="NAME" x="54.61" y="24.3586" size="1.778" layer="95"/>
-<attribute name="VALUE" x="54.61" y="19.558" size="1.778" layer="96"/>
+<instance part="R5" gate="G$1" x="104.14" y="55.88" smashed="yes">
+<attribute name="NAME" x="100.33" y="57.3786" size="1.778" layer="95"/>
+<attribute name="VALUE" x="100.33" y="52.578" size="1.778" layer="96"/>
 </instance>
 <instance part="GND8" gate="1" x="165.1" y="86.36" smashed="yes">
 <attribute name="VALUE" x="162.56" y="83.82" size="1.778" layer="96"/>
@@ -18629,11 +18629,11 @@ bei BUS-Problemen</text>
 <instance part="GND9" gate="G$1" x="175.26" y="86.36" smashed="yes">
 <attribute name="VALUE" x="172.72" y="83.82" size="1.778" layer="96"/>
 </instance>
-<instance part="P+3" gate="1" x="162.56" y="132.08" smashed="yes">
-<attribute name="VALUE" x="167.64" y="127" size="1.778" layer="96" rot="R90"/>
+<instance part="P+3" gate="1" x="154.94" y="132.08" smashed="yes">
+<attribute name="VALUE" x="158.496" y="126.746" size="1.778" layer="96"/>
 </instance>
-<instance part="GND10" gate="G$1" x="162.56" y="124.46" smashed="yes">
-<attribute name="VALUE" x="160.02" y="121.92" size="1.778" layer="96"/>
+<instance part="GND10" gate="G$1" x="152.4" y="124.46" smashed="yes">
+<attribute name="VALUE" x="158.496" y="124.46" size="1.778" layer="96"/>
 </instance>
 <instance part="P+4" gate="1" x="187.96" y="99.06" smashed="yes" rot="R270">
 <attribute name="VALUE" x="182.88" y="93.98" size="1.778" layer="96"/>
@@ -18686,17 +18686,17 @@ bei BUS-Problemen</text>
 <wire x1="160.02" y1="101.6" x2="210.82" y2="101.6" width="0.762" layer="92"/>
 <wire x1="210.82" y1="101.6" x2="213.36" y2="104.14" width="0.762" layer="92"/>
 <wire x1="213.36" y1="104.14" x2="213.36" y2="132.08" width="0.762" layer="92"/>
-<label x="182.88" y="104.14" size="1.778" layer="95"/>
+<label x="183.388" y="103.886" size="1.778" layer="95"/>
 </segment>
 </bus>
 <bus name="UART:MRX,MTX">
 <segment>
-<wire x1="68.58" y1="15.24" x2="68.58" y2="22.86" width="0.762" layer="92"/>
-<wire x1="68.58" y1="22.86" x2="71.12" y2="25.4" width="0.762" layer="92"/>
-<wire x1="71.12" y1="25.4" x2="149.86" y2="25.4" width="0.762" layer="92"/>
-<wire x1="149.86" y1="25.4" x2="152.4" y2="27.94" width="0.762" layer="92"/>
-<wire x1="152.4" y1="27.94" x2="152.4" y2="91.44" width="0.762" layer="92"/>
-<label x="73.66" y="27.94" size="1.778" layer="95"/>
+<wire x1="121.92" y1="58.42" x2="121.92" y2="66.04" width="0.762" layer="92"/>
+<wire x1="121.92" y1="66.04" x2="124.46" y2="68.58" width="0.762" layer="92"/>
+<wire x1="124.46" y1="68.58" x2="149.86" y2="68.58" width="0.762" layer="92"/>
+<wire x1="149.86" y1="68.58" x2="152.4" y2="71.12" width="0.762" layer="92"/>
+<wire x1="152.4" y1="71.12" x2="152.4" y2="91.44" width="0.762" layer="92"/>
+<label x="127" y="71.12" size="1.778" layer="95"/>
 </segment>
 </bus>
 <bus name="MCP_PRG:+5V,GNDIO,MCLR,PGC,PGD,PGM">
@@ -18845,14 +18845,15 @@ bei BUS-Problemen</text>
 <wire x1="175.26" y1="91.44" x2="175.26" y2="88.9" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<wire x1="157.48" y1="124.46" x2="160.02" y2="127" width="0.1524" layer="91"/>
+<wire x1="157.48" y1="124.46" x2="154.94" y2="127" width="0.1524" layer="91"/>
 <pinref part="GND10" gate="G$1" pin="GNDIO"/>
-<wire x1="160.02" y1="127" x2="162.56" y2="127" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="127" x2="152.4" y2="127" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="XPRG" gate="A" pin="3"/>
 <wire x1="142.24" y1="165.1" x2="139.7" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="139.7" y1="167.64" x2="139.7" y2="172.72" width="0.1524" layer="91"/>
+<label x="142.24" y="156.464" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="+5V" class="0">
@@ -18898,9 +18899,8 @@ bei BUS-Problemen</text>
 <junction x="20.32" y="40.64"/>
 </segment>
 <segment>
-<wire x1="157.48" y1="127" x2="160.02" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="157.48" y1="127" x2="154.94" y2="129.54" width="0.1524" layer="91"/>
 <pinref part="P+3" gate="1" pin="+5V"/>
-<wire x1="160.02" y1="129.54" x2="162.56" y2="129.54" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C6" gate="G$1" pin="1"/>
@@ -18917,6 +18917,7 @@ bei BUS-Problemen</text>
 <pinref part="XPRG" gate="A" pin="2"/>
 <wire x1="139.7" y1="165.1" x2="137.16" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="137.16" y1="167.64" x2="137.16" y2="172.72" width="0.1524" layer="91"/>
+<label x="139.7" y="160.02" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
@@ -18966,11 +18967,13 @@ bei BUS-Problemen</text>
 <pinref part="IC1" gate="G$1" pin="INT0/AN10/RB0"/>
 <wire x1="147.32" y1="101.6" x2="154.94" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="154.94" y1="101.6" x2="157.48" y2="104.14" width="0.1524" layer="91"/>
+<label x="158.242" y="104.14" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="IC3" gate="G$1" pin="SO"/>
 <wire x1="213.36" y1="127" x2="215.9" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="215.9" y1="124.46" x2="220.98" y2="124.46" width="0.1524" layer="91"/>
+<label x="212.598" y="127" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="SPI_MOSI" class="0">
@@ -18978,11 +18981,13 @@ bei BUS-Problemen</text>
 <pinref part="IC1" gate="G$1" pin="CANRX/RB3"/>
 <wire x1="157.48" y1="111.76" x2="154.94" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="154.94" y1="109.22" x2="147.32" y2="109.22" width="0.1524" layer="91"/>
+<label x="158.242" y="111.76" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="IC3" gate="G$1" pin="SI"/>
 <wire x1="213.36" y1="129.54" x2="215.9" y2="127" width="0.1524" layer="91"/>
 <wire x1="215.9" y1="127" x2="220.98" y2="127" width="0.1524" layer="91"/>
+<label x="212.598" y="129.54" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="SPI_CLK" class="0">
@@ -18990,11 +18995,13 @@ bei BUS-Problemen</text>
 <pinref part="IC1" gate="G$1" pin="INT1/AN8/RB1"/>
 <wire x1="157.48" y1="106.68" x2="154.94" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="154.94" y1="104.14" x2="147.32" y2="104.14" width="0.1524" layer="91"/>
+<label x="158.242" y="106.68" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="IC3" gate="G$1" pin="SCK"/>
 <wire x1="213.36" y1="124.46" x2="215.9" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="215.9" y1="121.92" x2="220.98" y2="121.92" width="0.1524" layer="91"/>
+<label x="212.598" y="124.46" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="SPI_CS" class="0">
@@ -19002,11 +19009,13 @@ bei BUS-Problemen</text>
 <pinref part="IC1" gate="G$1" pin="KBI0/AN9/RB4"/>
 <wire x1="157.48" y1="114.3" x2="154.94" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="154.94" y1="111.76" x2="147.32" y2="111.76" width="0.1524" layer="91"/>
+<label x="158.242" y="114.3" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="IC3" gate="G$1" pin="!CS"/>
 <wire x1="213.36" y1="132.08" x2="215.9" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="215.9" y1="129.54" x2="220.98" y2="129.54" width="0.1524" layer="91"/>
+<label x="212.598" y="132.08" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="MRX" class="0">
@@ -19014,13 +19023,13 @@ bei BUS-Problemen</text>
 <pinref part="IC1" gate="G$1" pin="RC7/RX/DT"/>
 <wire x1="147.32" y1="93.98" x2="149.86" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="152.4" y1="91.44" x2="149.86" y2="93.98" width="0.1524" layer="91"/>
+<label x="153.416" y="91.44" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="R5" gate="G$1" pin="1"/>
-<wire x1="48.26" y1="22.86" x2="53.34" y2="22.86" width="0.1524" layer="91"/>
-<wire x1="68.58" y1="15.24" x2="66.04" y2="17.78" width="0.1524" layer="91"/>
-<wire x1="66.04" y1="17.78" x2="48.26" y2="17.78" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="17.78" x2="48.26" y2="22.86" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="58.42" x2="119.38" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="109.22" y1="55.88" x2="119.38" y2="55.88" width="0.1524" layer="91"/>
+<label x="111.76" y="55.88" size="1.778" layer="95"/>
+<pinref part="R5" gate="G$1" pin="2"/>
 </segment>
 </net>
 <net name="MTX" class="0">
@@ -19028,11 +19037,13 @@ bei BUS-Problemen</text>
 <pinref part="IC1" gate="G$1" pin="RC6/TX/CK"/>
 <wire x1="152.4" y1="88.9" x2="149.86" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="149.86" y1="91.44" x2="147.32" y2="91.44" width="0.1524" layer="91"/>
+<label x="153.416" y="88.9" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="R5" gate="G$1" pin="2"/>
-<wire x1="68.58" y1="20.32" x2="66.04" y2="22.86" width="0.1524" layer="91"/>
-<wire x1="66.04" y1="22.86" x2="63.5" y2="22.86" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="63.5" x2="119.38" y2="60.96" width="0.1524" layer="91"/>
+<label x="111.76" y="60.96" size="1.778" layer="95"/>
+<pinref part="IC2" gate="B" pin="UART_RX"/>
+<wire x1="119.38" y1="60.96" x2="71.12" y2="60.96" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$5" class="0">
@@ -19076,11 +19087,13 @@ bei BUS-Problemen</text>
 <pinref part="IC1" gate="G$1" pin="KBI2/PGC/RB6"/>
 <wire x1="157.48" y1="119.38" x2="154.94" y2="116.84" width="0.1524" layer="91"/>
 <wire x1="154.94" y1="116.84" x2="147.32" y2="116.84" width="0.1524" layer="91"/>
+<label x="158.242" y="119.38" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="XPRG" gate="A" pin="4"/>
 <wire x1="144.78" y1="165.1" x2="142.24" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="167.64" x2="142.24" y2="172.72" width="0.1524" layer="91"/>
+<label x="144.78" y="159.258" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="PGD" class="0">
@@ -19088,11 +19101,13 @@ bei BUS-Problemen</text>
 <pinref part="IC1" gate="G$1" pin="KBI3/PGD/RB7"/>
 <wire x1="157.48" y1="121.92" x2="154.94" y2="119.38" width="0.1524" layer="91"/>
 <wire x1="154.94" y1="119.38" x2="147.32" y2="119.38" width="0.1524" layer="91"/>
+<label x="158.242" y="121.92" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="XPRG" gate="A" pin="5"/>
 <wire x1="147.32" y1="165.1" x2="144.78" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="144.78" y1="167.64" x2="144.78" y2="172.72" width="0.1524" layer="91"/>
+<label x="147.32" y="159.258" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -19123,12 +19138,6 @@ bei BUS-Problemen</text>
 <pinref part="X1.2" gate="-2" pin="KL"/>
 </segment>
 </net>
-<net name="N$11" class="0">
-<segment>
-<pinref part="IC1" gate="G$1" pin="D+"/>
-<wire x1="147.32" y1="88.9" x2="149.86" y2="88.9" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$13" class="0">
 <segment>
 <pinref part="IC1" gate="G$1" pin="VUSB3V3"/>
@@ -19156,11 +19165,13 @@ bei BUS-Problemen</text>
 <segment>
 <pinref part="IC1" gate="G$1" pin="RE3/!MCLR/VPP"/>
 <wire x1="93.98" y1="121.92" x2="96.52" y2="119.38" width="0.1524" layer="91"/>
+<label x="92.71" y="121.92" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
 <pinref part="XPRG" gate="A" pin="1"/>
 <wire x1="137.16" y1="165.1" x2="134.62" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="134.62" y1="167.64" x2="134.62" y2="172.72" width="0.1524" layer="91"/>
+<label x="137.16" y="157.48" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="PGM" class="0">
@@ -19168,6 +19179,14 @@ bei BUS-Problemen</text>
 <pinref part="XPRG" gate="A" pin="6"/>
 <wire x1="149.86" y1="165.1" x2="147.32" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="147.32" y1="167.64" x2="147.32" y2="172.72" width="0.1524" layer="91"/>
+<label x="149.86" y="159.004" size="1.778" layer="95" rot="R90"/>
+</segment>
+</net>
+<net name="N$1" class="0">
+<segment>
+<pinref part="R5" gate="G$1" pin="1"/>
+<pinref part="IC2" gate="B" pin="UART_TX"/>
+<wire x1="99.06" y1="55.88" x2="71.12" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
