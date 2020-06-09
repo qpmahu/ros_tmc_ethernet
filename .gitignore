@@ -1,5 +1,5 @@
 /DATA/
-/ECAD/
+*.?#*
 /MCAD/
 /PROG/ros_ethernet_motor.X/nbproject/private/
 /PROG/ros_ethernet_motor.X/nbproject/*.mk

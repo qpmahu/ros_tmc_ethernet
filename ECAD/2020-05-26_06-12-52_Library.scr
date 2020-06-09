@@ -1,0 +1,73 @@
+# Created by Ultra Librarian Gold 8.3.219 Copyright © 1999-2018
+# Frank Frank, Accelerated Designs
+
+Grid mil;
+Set Wire_Bend 2;
+
+
+Edit 'LTH-301-32_LTO.pac';
+Change Drill 30;
+Pad '1' Round 0 50 R0 (0 0);
+Change Drill 30;
+Pad '2' Round 0 50 R180 (0 -748);
+Change Drill 30;
+Pad '3' Round 0 50 R0 (100 -748);
+Change Drill 30;
+Pad '4' Round 0 50 R180 (100 0);
+Layer 51;
+Wire 6 (175 102) (-75 102);
+Wire 6 (175 -850) (-75 -850);
+Wire 6 (175 102) (175 -850);
+Wire 6 (-75 102) (-75 -850);
+Wire 0 (-45 0) -180 (-45 0);
+Wire 0 (-45 0) -180 (-45 0);
+Layer 21;
+Wire 6 (180 108) (-80 108);
+Wire 6 (180 -856) (-80 -856);
+Wire 6 (180 108) (180 -856);
+Wire 6 (-80 108) (-80 -856);
+Change Size 50;
+Change Ratio 6;
+Text '>Value' SR0 (-18 -399);
+Layer 25;
+Change Size 50;
+Change Ratio 6;
+Text '>Name' SR0 (-79 -399);
+Layer 27;
+
+Edit 'LTH-301-32.sym';
+Layer 94;
+Pin '1' Pas None Middle R0 Both 0 (100 0)
+Pin '2' Pas None Middle R0 Both 0 (100 -100)
+Pin '3' Pas None Middle R180 Both 0 (1500 -100)
+Pin '4' Pas None Middle R180 Both 0 (1500 0)
+Wire 6 (300 200) (300 -300);
+Wire 6 (300 -300) (1300 -300);
+Wire 6 (1300 -300) (1300 200);
+Wire 6 (1300 200) (300 200);
+Layer 97;
+Layer 95;
+Change Size 82;
+Change Ratio 6;
+Text '>Name' SR0 (614 359);
+Layer 96;
+Change Size 82;
+Change Ratio 6;
+Text '>Value' SR0 (589 259);
+
+Edit 'LTH-301-32.dev';
+Prefix 'U';
+Description '';
+Value Off;
+Add LTH-301-32 'A' Next  0 (0 0);
+Package 'LTH-301-32_LTO';
+Technology '';
+Attribute Vendor 'Lite-On';
+Attribute Manufacturer_Part_Number 'LTH-301-32';
+Attribute Built_By 'EMA_Cory';
+Attribute Copyright 'Copyright (C) 2018 Accelerated Designs. All rights reserved';
+Attribute SourceLibrary 'Lite-On_2019-12-03';
+Connect 'A.1' '1';
+Connect 'A.2' '2';
+Connect 'A.3' '3';
+Connect 'A.4' '4';
