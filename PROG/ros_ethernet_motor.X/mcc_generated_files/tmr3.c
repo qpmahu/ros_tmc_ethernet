@@ -13,7 +13,7 @@
   @Description
     This source file provides APIs for TMR3.
     Generation Information :
-        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.2
+        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.3
         Device            :  PIC18F24K50
         Driver Version    :  2.01
     The generated drivers are tested against the following:
@@ -79,8 +79,8 @@ void TMR3_Initialize(void)
     // Clearing IF flag.
     PIR2bits.TMR3IF = 0;
 
-    // T3CKPS 1:8; T3OSCEN disabled; T3SYNC do_not_synchronize; TMR3CS FOSC; TMR3ON enabled; T3RD16 disabled; 
-    T3CON = 0x75;
+    // T3CKPS 1:1; T3OSCEN disabled; T3SYNC do_not_synchronize; TMR3CS FOSC/4; TMR3ON enabled; T3RD16 disabled; 
+    T3CON = 0x05;
 }
 
 void TMR3_StartTimer(void)

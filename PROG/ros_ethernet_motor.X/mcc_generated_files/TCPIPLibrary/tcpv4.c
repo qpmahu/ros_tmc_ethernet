@@ -1574,8 +1574,10 @@ void TCP_Update(void)
 
 static error_msg TCP_TimoutRetransmit(void)	//jira: CAE_MCU8-6056
 {
-    currentTCB->txBufferPtr -= tcpDataLength;
-    txBufferPtrForRetransmit = currentTCB->txBufferPtr;
+    // doesn't compile
+    //currentTCB->txBufferPtr -= tcpDataLength;
+    txBufferPtrForRetransmit = currentTCB->txBufferPtr - tcpDataLength;
+    currentTCB->txBufferPtr = txBufferPtrForRetransmit;
     bytesToSendForRetransmit = tcpDataLength;
     currentTCB->localSeqno = localSeqnoForRetransmit;
     lastAckNumber = tcpHeader.ackNumber;

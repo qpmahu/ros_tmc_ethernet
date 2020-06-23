@@ -20,8 +20,6 @@
     TERMS.
 */
 
-#include "ETH_example.h"
-
 #include "TCPIPLibrary/udpv4.h"
 #include "TCPIPLibrary/udpv4_port_handler_table.h"
 
@@ -46,12 +44,9 @@ void Demo_UDP_Receive(int length)
     receivedMsg = true;
 }
 
-void ETH_example(void)
+void Demo_UDP_Send(void)
 {
-    while(1)
-    {
         //Network_Manage() needs to be periodically called to receive messages
-        Network_Manage();
         if (receivedMsg)
         {
             //Broadcast the received message, onto the same UDP port
@@ -62,5 +57,4 @@ void ETH_example(void)
             }
             receivedMsg = false;
         }
-    }
 }

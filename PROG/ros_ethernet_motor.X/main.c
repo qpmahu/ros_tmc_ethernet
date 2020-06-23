@@ -44,6 +44,9 @@ void main(void)
 
     while (1)
     {
-        // Add your application code
+        Network_Manage();
+        DEMO_TCP_Client();
+        Demo_UDP_Send();
+        ros_motor_ethernet();
     }
 }

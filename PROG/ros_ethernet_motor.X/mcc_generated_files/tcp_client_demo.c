@@ -8,7 +8,7 @@
 #include "TCPIPLibrary/tcpip_config.h"
 
 
-sockaddr_in_t remoteSocket;
+sockaddr_in4_t remoteSocket;
 
 void DEMO_TCP_Client(void)
 {
@@ -68,13 +68,13 @@ void DEMO_TCP_Client(void)
                     } else {
                         rxdataPort60[rx_len] = 0;
                     }
-
+                    // receive led command -> Set ROS Node here
                     if(rxdataPort60[0] == 'l' && rxdataPort60[1] == 'e' && rxdataPort60[2] == 'd') {
                         if(rxdataPort60[6] == 'o' && rxdataPort60[7] == 'n') {
-                                Toggle_Led_SetHigh();
+                                //Toggle_Led_SetHigh();
                         }else {
                             if(rxdataPort60[6] == 'o' && rxdataPort60[7] == 'f' && rxdataPort60[8] == 'f') {
-                                Toggle_Led_SetLow();
+                                //Toggle_Led_SetLow();
                             }
                         }
                     }
@@ -86,7 +86,8 @@ void DEMO_TCP_Client(void)
                 { 
                     // send board status message only once at 2 seconds
                     socketTimeout = t_client + 2;
-                    pot = ADC_GetConversion(Pot);
+                    // Example from Demo, pot was a potentiometer
+                    int pot = 0;
                     sprintf(txdataPort60,"Pot: %d\n LED's state: %d\n", pot, LATAbits.LATA5);
                     //send data back to the source
                     TCP_Send(&port60TCB, txdataPort60, strlen(txdataPort60));
