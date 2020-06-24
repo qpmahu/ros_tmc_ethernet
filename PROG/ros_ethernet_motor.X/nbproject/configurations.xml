@@ -8,8 +8,8 @@
                      displayName="MCC Generated Files"
                      projectFiles="true">
         <logicalFolder name="drivers" displayName="drivers" projectFiles="true">
-          <itemPath>mcc_generated_files/drivers/spi_master.h</itemPath>
           <itemPath>mcc_generated_files/drivers/uart.h</itemPath>
+          <itemPath>mcc_generated_files/drivers/spi_master.h</itemPath>
         </logicalFolder>
         <logicalFolder name="TCPIPLibrary"
                        displayName="TCPIPLibrary"
@@ -18,36 +18,34 @@
           <itemPath>mcc_generated_files/TCPIPLibrary/lfsr.h</itemPath>
           <itemPath>mcc_generated_files/TCPIPLibrary/network.h</itemPath>
           <itemPath>mcc_generated_files/TCPIPLibrary/arpv4.h</itemPath>
+          <itemPath>mcc_generated_files/TCPIPLibrary/tcpv4.h</itemPath>
           <itemPath>mcc_generated_files/TCPIPLibrary/tcpip_types.h</itemPath>
           <itemPath>mcc_generated_files/TCPIPLibrary/log.h</itemPath>
           <itemPath>mcc_generated_files/TCPIPLibrary/rtcc.h</itemPath>
-          <itemPath>mcc_generated_files/TCPIPLibrary/log_syslog.h</itemPath>
-          <itemPath>mcc_generated_files/TCPIPLibrary/mac_address.h</itemPath>
-          <itemPath>mcc_generated_files/TCPIPLibrary/ipv4.h</itemPath>
-          <itemPath>mcc_generated_files/TCPIPLibrary/ethernet_driver.h</itemPath>
-          <itemPath>mcc_generated_files/TCPIPLibrary/tcpip_config.h</itemPath>
-          <itemPath>mcc_generated_files/TCPIPLibrary/log_console.h</itemPath>
+          <itemPath>mcc_generated_files/TCPIPLibrary/udpv4.h</itemPath>
           <itemPath>mcc_generated_files/TCPIPLibrary/ENC28J60.h</itemPath>
           <itemPath>mcc_generated_files/TCPIPLibrary/icmp.h</itemPath>
-          <itemPath>mcc_generated_files/TCPIPLibrary/dhcp_client.h</itemPath>
-          <itemPath>mcc_generated_files/TCPIPLibrary/udpv4.h</itemPath>
+          <itemPath>mcc_generated_files/TCPIPLibrary/log_syslog.h</itemPath>
+          <itemPath>mcc_generated_files/TCPIPLibrary/ipv4.h</itemPath>
+          <itemPath>mcc_generated_files/TCPIPLibrary/mac_address.h</itemPath>
           <itemPath>mcc_generated_files/TCPIPLibrary/udpv4_port_handler_table.h</itemPath>
-          <itemPath>mcc_generated_files/TCPIPLibrary/tcpv4.h</itemPath>
+          <itemPath>mcc_generated_files/TCPIPLibrary/ethernet_driver.h</itemPath>
+          <itemPath>mcc_generated_files/TCPIPLibrary/tcpip_config.h</itemPath>
+          <itemPath>mcc_generated_files/TCPIPLibrary/dhcp_client.h</itemPath>
+          <itemPath>mcc_generated_files/TCPIPLibrary/log_console.h</itemPath>
         </logicalFolder>
         <itemPath>mcc_generated_files/pin_manager.h</itemPath>
         <itemPath>mcc_generated_files/memory.h</itemPath>
-        <itemPath>mcc_generated_files/eusart1.h</itemPath>
         <itemPath>mcc_generated_files/tmr1.h</itemPath>
         <itemPath>mcc_generated_files/device_config.h</itemPath>
-        <itemPath>mcc_generated_files/eccp1.h</itemPath>
         <itemPath>mcc_generated_files/mcc.h</itemPath>
         <itemPath>mcc_generated_files/pwm2.h</itemPath>
-        <itemPath>mcc_generated_files/spi1.h</itemPath>
         <itemPath>mcc_generated_files/tmr2.h</itemPath>
         <itemPath>mcc_generated_files/interrupt_manager.h</itemPath>
-        <itemPath>mcc_generated_files/tmr3.h</itemPath>
         <itemPath>mcc_generated_files/tcp_client_demo.h</itemPath>
         <itemPath>mcc_generated_files/udp_demo.h</itemPath>
+        <itemPath>mcc_generated_files/spi.h</itemPath>
+        <itemPath>mcc_generated_files/eusart.h</itemPath>
       </logicalFolder>
       <itemPath>rme.h</itemPath>
     </logicalFolder>
@@ -69,36 +67,34 @@
                        displayName="TCPIPLibrary"
                        projectFiles="true">
           <itemPath>mcc_generated_files/TCPIPLibrary/ip_database.c</itemPath>
+          <itemPath>mcc_generated_files/TCPIPLibrary/ENC28J60.c</itemPath>
           <itemPath>mcc_generated_files/TCPIPLibrary/lfsr.c</itemPath>
           <itemPath>mcc_generated_files/TCPIPLibrary/network.c</itemPath>
           <itemPath>mcc_generated_files/TCPIPLibrary/arpv4.c</itemPath>
+          <itemPath>mcc_generated_files/TCPIPLibrary/tcpv4.c</itemPath>
           <itemPath>mcc_generated_files/TCPIPLibrary/rtcc.c</itemPath>
           <itemPath>mcc_generated_files/TCPIPLibrary/log.c</itemPath>
+          <itemPath>mcc_generated_files/TCPIPLibrary/udpv4.c</itemPath>
           <itemPath>mcc_generated_files/TCPIPLibrary/ipv4.c</itemPath>
           <itemPath>mcc_generated_files/TCPIPLibrary/log_syslog.c</itemPath>
+          <itemPath>mcc_generated_files/TCPIPLibrary/icmp.c</itemPath>
+          <itemPath>mcc_generated_files/TCPIPLibrary/udpv4_port_handler_table.c</itemPath>
           <itemPath>mcc_generated_files/TCPIPLibrary/mac_address.c</itemPath>
           <itemPath>mcc_generated_files/TCPIPLibrary/log_console.c</itemPath>
-          <itemPath>mcc_generated_files/TCPIPLibrary/ENC28J60.c</itemPath>
-          <itemPath>mcc_generated_files/TCPIPLibrary/icmp.c</itemPath>
           <itemPath>mcc_generated_files/TCPIPLibrary/dhcp_client.c</itemPath>
-          <itemPath>mcc_generated_files/TCPIPLibrary/udpv4.c</itemPath>
-          <itemPath>mcc_generated_files/TCPIPLibrary/udpv4_port_handler_table.c</itemPath>
-          <itemPath>mcc_generated_files/TCPIPLibrary/tcpv4.c</itemPath>
         </logicalFolder>
         <itemPath>mcc_generated_files/tmr1.c</itemPath>
         <itemPath>mcc_generated_files/memory.c</itemPath>
         <itemPath>mcc_generated_files/pwm2.c</itemPath>
-        <itemPath>mcc_generated_files/eccp1.c</itemPath>
-        <itemPath>mcc_generated_files/eusart1.c</itemPath>
         <itemPath>mcc_generated_files/device_config.c</itemPath>
         <itemPath>mcc_generated_files/mcc.c</itemPath>
         <itemPath>mcc_generated_files/pin_manager.c</itemPath>
-        <itemPath>mcc_generated_files/spi1.c</itemPath>
         <itemPath>mcc_generated_files/tmr2.c</itemPath>
         <itemPath>mcc_generated_files/interrupt_manager.c</itemPath>
-        <itemPath>mcc_generated_files/tmr3.c</itemPath>
         <itemPath>mcc_generated_files/tcp_client_demo.c</itemPath>
         <itemPath>mcc_generated_files/udp_demo.c</itemPath>
+        <itemPath>mcc_generated_files/spi.c</itemPath>
+        <itemPath>mcc_generated_files/eusart.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
       <itemPath>rme.c</itemPath>
@@ -119,7 +115,7 @@
     <conf name="default" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
-        <targetDevice>PIC18F24K50</targetDevice>
+        <targetDevice>PIC18F26K20</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
@@ -274,7 +270,7 @@
         <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
         <property key="programoptions.usehighvoltageonmclr" value="false"/>
         <property key="programoptions.uselvpprogramming" value="false"/>
-        <property key="voltagevalue" value="1.875"/>
+        <property key="voltagevalue" value="2.375"/>
       </PICkit3PlatformTool>
       <PK3OBPlatformTool>
         <property key="AutoSelectMemRanges" value="auto"/>
@@ -750,7 +746,7 @@
     <conf name="Stimulus" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
-        <targetDevice>PIC18F24K50</targetDevice>
+        <targetDevice>PIC18F26K20</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
         <platformTool>Simulator</platformTool>

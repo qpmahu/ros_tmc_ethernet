@@ -14,8 +14,8 @@
     This header file provides APIs for driver for MEMORY.
     Generation Information :
         Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.3
-        Device            :  PIC18F24K50
-        Driver Version    :  2.0.2
+        Device            :  PIC18F26K20
+        Driver Version    :  2.03
     The generated drivers are tested against the following:
         Compiler          :  XC8 2.20 and above
         MPLAB             :  MPLAB X 5.40
@@ -66,7 +66,7 @@
 
 #define WRITE_FLASH_BLOCKSIZE    64
 #define ERASE_FLASH_BLOCKSIZE    64
-#define END_FLASH                0x4000
+#define END_FLASH                0x10000
 
 /**
   Section: Flash Module APIs
@@ -240,13 +240,13 @@ void FLASH_EraseBlock(uint32_t baseAddr);
 
   @Example
     <code>
-    uint8_t dataeeAddr = 0x10;
+    uint16_t dataeeAddr = 0x10;
     uint8_t dataeeData = 0x55;
 
     DATAEE_WriteByte(dataeeAddr, dataeeData);
     </code>
 */
-void DATAEE_WriteByte(uint8_t bAdd, uint8_t bData);
+void DATAEE_WriteByte(uint16_t bAdd, uint8_t bData);
 
 /**
   @Summary
@@ -266,13 +266,13 @@ void DATAEE_WriteByte(uint8_t bAdd, uint8_t bData);
 
   @Example
     <code>
-    uint8_t dataeeAddr = 0x10;
+    uint16_t dataeeAddr = 0x10;
     uint8_t readData;
 
     readData = DATAEE_ReadByte(dataeeAddr);
     </code>
 */
-uint8_t DATAEE_ReadByte(uint8_t bAdd);
+uint8_t DATAEE_ReadByte(uint16_t bAdd);
 
 void MEMORY_Tasks(void);
 

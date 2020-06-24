@@ -8,13 +8,13 @@
     main.c
 
   Summary:
-    This is the main file generated using PIC18 MCUs
+    This is the main file generated using PIC10 / PIC12 / PIC16 / PIC18 MCUs
 
   Description:
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  PIC18 MCUs - 1.81.0
-        Device            :  PIC18F24K50
+        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.3
+        Device            :  PIC18F26K20
         Driver Version    :  2.00
 */
 

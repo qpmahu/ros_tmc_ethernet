@@ -28,10 +28,10 @@
  */
 #include <stdint.h>
 #include <stddef.h>
-#include "../eusart1.h"
+#include "../eusart.h"
 
 typedef enum { 
-    TMC
+    UART
 } uart_configurations_t;
 
 typedef struct { uint8_t (*Read)(void); void (*Write)(uint8_t txdata); bool (*TransmitReady)(void); bool (*DataReady)(void); void (*SetTxISR)(void (* interruptHandler)(void)); void (*RxDefaultISR)(void); void (*SetRxISR)(void (* interruptHandler)(void)); bool (*TransmitDone)(void); void (*TxDefaultISR)(void); void (*Initialize)(void);  } uart_functions_t;

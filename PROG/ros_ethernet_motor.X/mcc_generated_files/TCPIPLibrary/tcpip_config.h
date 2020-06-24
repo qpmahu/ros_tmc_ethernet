@@ -55,13 +55,13 @@ MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE TER
 
 
 /******************************** ARP Protocol Defines *********************************/
-#define ARP_MAP_SIZE 8
+#define ARP_MAP_SIZE 4
 
 
 /******************************** DHCP Protocol Defines ********************************/
-const char dhcpName[] = "ros_axis";
+const char dhcpName[] = "ros_axis_1";
 // unfortunately, you must defined the macro below as sizeof does not work in the preprocessor
-#define DHCP_NAME_SIZE 8
+#define DHCP_NAME_SIZE 10
 
 
 /******************************** IP Protocol Defines ********************************/

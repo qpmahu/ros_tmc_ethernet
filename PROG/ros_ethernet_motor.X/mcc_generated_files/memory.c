@@ -14,8 +14,8 @@
     This file provides implementations of driver APIs for MEMORY.
     Generation Information :
         Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.3
-        Device            :  PIC18F24K50
-        Driver Version    :  2.0.2
+        Device            :  PIC18F26K20
+        Driver Version    :  2.03
     The generated drivers are tested against the following:
         Compiler          :  XC8 2.20 and above
         MPLAB             :  MPLAB X 5.40
@@ -99,7 +99,7 @@ int8_t FLASH_WriteBlock(uint32_t writeAddr, uint8_t *flashWrBufPtr)
     uint16_t WriteBlkOffset = 0;
     
     // Flash write must start at the beginning of a row
-    if( writeAddr != blockStartAddr )
+    if(writeAddr != blockStartAddr)
     {
         return -1;
     }
@@ -108,19 +108,18 @@ int8_t FLASH_WriteBlock(uint32_t writeAddr, uint8_t *flashWrBufPtr)
     numberOfWriteBlocks = ERASE_FLASH_BLOCKSIZE/WRITE_FLASH_BLOCKSIZE;   
 
     // Block erase sequence
-    FLASH_EraseBlock(writeAddr);
+    FLASH_EraseBlock(writeAddr); 
 
     for(j=0; j<numberOfWriteBlocks; j++)
     {
         // Calculate starting offset of Write Block
         WriteBlkOffset = (uint16_t)j * WRITE_FLASH_BLOCKSIZE;
         
-        // Block write sequence
+        // Block Write sequence
         TBLPTRU = (uint8_t)(((writeAddr + WriteBlkOffset) & 0x00FF0000) >> 16);    // Load Table point register
         TBLPTRH = (uint8_t)(((writeAddr + WriteBlkOffset) & 0x0000FF00) >> 8);
         TBLPTRL = (uint8_t)((writeAddr + WriteBlkOffset) & 0x000000FF);
-        
-        // Write block of data
+    
         for (i=0; i<WRITE_FLASH_BLOCKSIZE; i++)
         {
             TABLAT = flashWrBufPtr[WriteBlkOffset+i];  // Load data byte
@@ -134,9 +133,7 @@ int8_t FLASH_WriteBlock(uint32_t writeAddr, uint8_t *flashWrBufPtr)
                 asm("TBLWTPOSTINC");
             }
         }
-
-        EECON1bits.EEPGD = 1;
-        EECON1bits.CFGS = 0;
+        
         EECON1bits.WREN = 1;
         INTCONbits.GIE = 0; // Disable interrupts
         EECON2 = 0x55;
@@ -173,11 +170,12 @@ void FLASH_EraseBlock(uint32_t baseAddr)
   Section: Data EEPROM Module APIs
 */
 
-void DATAEE_WriteByte(uint8_t bAdd, uint8_t bData)
+void DATAEE_WriteByte(uint16_t bAdd, uint8_t bData)
 {
     uint8_t GIEBitValue = INTCONbits.GIE;
 
-    EEADR = (uint8_t)(bAdd & 0xFF);
+    EEADRH = ((bAdd >> 8) & 0x03);
+    EEADR = (bAdd & 0xFF);
     EEDATA = bData;
     EECON1bits.EEPGD = 0;
     EECON1bits.CFGS = 0;
@@ -192,12 +190,13 @@ void DATAEE_WriteByte(uint8_t bAdd, uint8_t bData)
     }
 
     EECON1bits.WREN = 0;
-    INTCONbits.GIE = GIEBitValue;   // Restore interrupt enable
+    INTCONbits.GIE = GIEBitValue;   // restore interrupt enable
 }
 
-uint8_t DATAEE_ReadByte(uint8_t bAdd)
+uint8_t DATAEE_ReadByte(uint16_t bAdd)
 {
-    EEADR = (uint8_t)(bAdd & 0xFF);
+    EEADRH = ((bAdd >> 8) & 0x03);
+    EEADR = (bAdd & 0xFF);
     EECON1bits.CFGS = 0;
     EECON1bits.EEPGD = 0;
     EECON1bits.RD = 1;
@@ -206,6 +205,7 @@ uint8_t DATAEE_ReadByte(uint8_t bAdd)
 
     return (EEDATA);
 }
+
 void MEMORY_Tasks( void )
 {
     /* TODO : Add interrupt handling code */

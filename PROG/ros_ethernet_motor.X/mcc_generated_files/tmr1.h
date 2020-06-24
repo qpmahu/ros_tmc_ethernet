@@ -14,7 +14,7 @@
     This header file provides APIs for driver for TMR1.
     Generation Information :
         Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.3
-        Device            :  PIC18F24K50
+        Device            :  PIC18F26K20
         Driver Version    :  2.01
     The generated drivers are tested against the following:
         Compiler          :  XC8 2.20 and above
@@ -60,7 +60,7 @@
 
 #endif
 
-#define TMR1_INTERRUPT_TICKER_FACTOR    100
+#define TMR1_INTERRUPT_TICKER_FACTOR    40
 
 /**
   Section: TMR1 APIs
@@ -174,17 +174,16 @@ void TMR1_StopTimer(void);
 
   @Example
     <code>
-    uint16_t timerVal=0;
+    uint16_t timerVal = 0;
 
     TMR1_Initialize();
 
     TMR1_StartTimer();
 
     // some delay or code
-
     TMR1_StopTimer();
 
-    timerVal=TMR1_ReadTimer();
+    timerVal = TMR1_ReadTimer();
     </code>
  */
 uint16_t TMR1_ReadTimer(void);
@@ -238,96 +237,14 @@ void TMR1_WriteTimer(uint16_t timerVal);
     TMR1_StartTimer();
 
     if(TMR1_HasOverflowOccured())
-    {
+     {
         TMR1_StopTimer();
-    }
+     }
 
-    TMR1_Reload();}
-    </code>
+     TMR1_Reload();}
+     </code>
 */
 void TMR1_Reload(void);
-
-/**
-  @Summary
-    Starts the single pulse acquisition in TMR1 gate operation.
-
-  @Description
-    This function starts the single pulse acquisition in TMR1 gate operation.
-    This function must be used when the TMR1 gate is enabled.
-
-  @Preconditions
-    Initialize  the TMR1 with gate enable before calling this function.
-
-  @Param
-    None
-
-  @Returns
-    None
-
-  @Example
-    <code>
-    uint16_t xVal;
-    uint16_t yVal;
-
-    //enable TMR1 singlepulse mode
-    TMR1_StartSinglePulseAcquistion();
-
-    //check TMR1 gate status
-    if(TMR1_CheckGateValueStatus()== 0)
-    {
-        xVal = TMR1_ReadTimer();
-    }
-
-    // wait untill gate interrupt occured
-    while(TMR1GIF == 0)
-    {
-    }
-
-    yVal = TMR1_ReadTimer();
-    </code>
-*/
-void TMR1_StartSinglePulseAcquisition(void);
-
-/**
-  @Summary
-    Check the current state of Timer1 gate.
-
-  @Description
-    This function reads the TMR1 gate value and return it.
-    This function must be used when the TMR1 gate is enabled.
-
-  @Preconditions
-    Initialize  the TMR1 with gate enable before calling this function.
-
-  @Param
-    None
-
-  @Returns
-    None
-
-  @Example
-    <code>
-    uint16_t xVal;
-    uint16_t yVal;
-
-    //enable TMR1 singlepulse mode
-    TMR1_StartSinglePulseAcquistion();
-
-    //check TMR1 gate status
-    if(TMR1_CheckGateValueStatus()== 0)
-    {
-        xVal = TMR1_ReadTimer();
-    }
-
-    //wait untill gate interrupt occured
-    while(TMR1IF == 0)
-    {
-    }
-
-    yVal = TMR1_ReadTimer();
-    </code>
-*/
-uint8_t TMR1_CheckGateValueStatus(void);
 
 /**
   @Summary
@@ -353,8 +270,7 @@ void TMR1_ISR(void);
     This routine is called by the Interrupt Manager.
 
   @Preconditions
-    The TMR1_Initialize() routine should be called
-    prior to use this routine.
+    None
 
   @Param
     None
@@ -418,7 +334,6 @@ extern void (*TMR1_InterruptHandler)(void);
 */
 void TMR1_DefaultInterruptHandler(void);
 
-
 #ifdef __cplusplus  // Provide C++ Compatibility
 
     }
@@ -429,3 +344,4 @@ void TMR1_DefaultInterruptHandler(void);
 /**
  End of File
 */
+

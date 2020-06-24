@@ -14,7 +14,7 @@
     This source file provides APIs for TMR1.
     Generation Information :
         Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.3
-        Device            :  PIC18F24K50
+        Device            :  PIC18F26K20
         Driver Version    :  2.01
     The generated drivers are tested against the following:
         Compiler          :  XC8 2.20 and above
@@ -64,15 +64,12 @@ void (*TMR1_InterruptHandler)(void);
 void TMR1_Initialize(void)
 {
     //Set the Timer to the options selected in the GUI
-
-    //T1GSS T1G_pin; TMR1GE disabled; T1GTM disabled; T1GPOL low; T1GGO done; T1GSPM disabled; 
-    T1GCON = 0x00;
-
-    //TMR1H 21; 
-    TMR1H = 0x15;
-
-    //TMR1L 160; 
-    TMR1L = 0xA0;
+	
+	// TMR1H 158; 
+		TMR1H = 0x9E;
+	
+	// TMR1L 88; 
+		TMR1L = 0x58;
 
     // Load the TMR value to reload variable
     timer1ReloadVal=TMR1;
@@ -86,8 +83,8 @@ void TMR1_Initialize(void)
     // Set Default Interrupt Handler
     TMR1_SetInterruptHandler(TMR1_DefaultInterruptHandler);
 
-    // T1CKPS 1:8; T1OSCEN disabled; T1SYNC do_not_synchronize; TMR1CS FOSC; TMR1ON enabled; T1RD16 disabled; 
-    T1CON = 0x75;
+    // T1CKPS 1:8; T1OSCEN disabled; TMR1CS FOSC/4; nT1SYNC do_not_synchronize; TMR1ON enabled; RD16 disabled; 
+    T1CON = 0x35;
 }
 
 void TMR1_StartTimer(void)
@@ -107,8 +104,8 @@ uint16_t TMR1_ReadTimer(void)
     uint16_t readVal;
     uint8_t readValHigh;
     uint8_t readValLow;
-    
-    T1CONbits.T1RD16 = 1;
+	
+    T1CONbits.RD16 = 1;
 	
     readValLow = TMR1L;
     readValHigh = TMR1H;
@@ -120,7 +117,7 @@ uint16_t TMR1_ReadTimer(void)
 
 void TMR1_WriteTimer(uint16_t timerVal)
 {
-    if (T1CONbits.T1SYNC == 1)
+    if (T1CONbits.nT1SYNC == 1)
     {
         // Stop the Timer by writing to TMRxON bit
         T1CONbits.TMR1ON = 0;
@@ -145,25 +142,15 @@ void TMR1_Reload(void)
     TMR1_WriteTimer(timer1ReloadVal);
 }
 
-void TMR1_StartSinglePulseAcquisition(void)
-{
-    T1GCONbits.T1GGO = 1;
-}
-
-uint8_t TMR1_CheckGateValueStatus(void)
-{
-    return T1GCONbits.T1GVAL;
-}
-
 void TMR1_ISR(void)
 {
-    static volatile unsigned int CountCallBack = 0;
+    static volatile uint16_t CountCallBack = 0;
 
     // Clear the TMR1 interrupt flag
-    PIR1bits.TMR1IF = 0;
+    PIR1bits.TMR1IF = 0;    
     TMR1_WriteTimer(timer1ReloadVal);
 
-    // callback function - called every 100th pass
+    // callback function - called every 40th pass
     if (++CountCallBack >= TMR1_INTERRUPT_TICKER_FACTOR)
     {
         // ticker function call
@@ -177,6 +164,7 @@ void TMR1_ISR(void)
 void TMR1_CallBack(void)
 {
     // Add your custom callback code here
+
     if(TMR1_InterruptHandler)
     {
         TMR1_InterruptHandler();
@@ -191,7 +179,6 @@ void TMR1_DefaultInterruptHandler(void){
     // add your TMR1 interrupt custom code
     // or set custom function using TMR1_SetInterruptHandler()
 }
-
 
 /**
  End of File

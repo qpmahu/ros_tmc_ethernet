@@ -14,7 +14,7 @@
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
         Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.3
-        Device            :  PIC18F24K50
+        Device            :  PIC18F26K20
         Driver Version    :  2.00
     The generated drivers are tested against the following:
         Compiler          :  XC8 2.20 and above or later
@@ -53,14 +53,12 @@
 #include <stdbool.h>
 #include <conio.h>
 #include "interrupt_manager.h"
-#include "spi1.h"
-#include "tmr3.h"
+#include "spi.h"
 #include "tmr1.h"
 #include "tmr2.h"
 #include "pwm2.h"
-#include "eccp1.h"
 #include "memory.h"
-#include "eusart1.h"
+#include "eusart.h"
 #include "drivers/spi_master.h"
 #include "TCPIPLibrary/network.h"
 

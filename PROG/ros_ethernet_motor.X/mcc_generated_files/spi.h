@@ -1,24 +1,24 @@
 /**
-  ECCP1 Generated Driver File
+  SPI Generated Driver API Header File
 
   @Company
     Microchip Technology Inc.
 
   @File Name
-    eccp1.c
+    spi.h
 
   @Summary
-    This is the generated driver implementation file for the ECCP1 driver using PIC10 / PIC12 / PIC16 / PIC18 MCUs
+    This is the generated header file for the SPI driver using PIC10 / PIC12 / PIC16 / PIC18 MCUs
 
   @Description
-    This source file provides implementations for driver APIs for ECCP1.
+    This header file provides APIs for driver for SPI.
     Generation Information :
         Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.3
-        Device            :  PIC18F24K50
-        Driver Version    :  2.02
+        Device            :  PIC18F26K20
+        Driver Version    :  1.0.0
     The generated drivers are tested against the following:
-        Compiler          :  XC8 2.20 and above
-         MPLAB 	          :  MPLAB X 5.40
+        Compiler          :  XC8 2.20 and above or later
+        MPLAB             :  MPLAB X 5.40
 */
 
 /*
@@ -44,52 +44,31 @@
     SOFTWARE.
 */
 
+#ifndef SPI_H
+#define SPI_H
+
 /**
   Section: Included Files
 */
 
-#include <xc.h>
-#include "eccp1.h"
+#include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
 
-/**
-  Section: Capture Module APIs:
-*/
+/* SPI interfaces */
+typedef enum { 
+    SPI_DEFAULT,
+    MAC_CONFIG
+} spi_modes_t;
 
-void ECCP1_Initialize(void)
-{
-    // Set the ECCP1 to the options selected in the User Interface
-	
-	// CCP1M Every rising edge; DC1B 0; P1M single; 
-	CCP1CON = 0x05;    
-	
-	// CCPR1H 0; 
-	CCPR1H = 0x00;    
-	
-	// CCPR1L 0; 
-	CCPR1L = 0x00;    
-    
-	
-	// Selecting Timer3
-	CCPTMRSbits.C1TSEL = 0x1;
-}
+void SPI_Initialize(void);
+bool SPI_Open(spi_modes_t spiUniqueConfiguration);
+void SPI_Close(void);
+uint8_t SPI_ExchangeByte(uint8_t data);
+void SPI_ExchangeBlock(void *block, size_t blockSize);
+void SPI_WriteBlock(void *block, size_t blockSize);
+void SPI_ReadBlock(void *block, size_t blockSize);
+void SPI_WriteByte(uint8_t byte);
+uint8_t SPI_ReadByte(void);
 
-bool ECCP1_IsCapturedDataReady(void)
-{
-    // Check if data is ready to read from capture module by reading "CCPIF" flag.
-    return (PIR1bits.CCP1IF);
-}
-
-uint16_t ECCP1_CaptureRead(void)
-{
-    CCP1_PERIOD_REG_T module;
-
-    // Copy captured value.
-    module.ccpr1l = CCPR1L;
-    module.ccpr1h = CCPR1H;
-    
-    // Return 16bit captured value
-    return module.ccpr1_16Bit;
-}
-/**
- End of File
-*/
+#endif //SPI_H

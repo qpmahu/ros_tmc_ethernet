@@ -1574,8 +1574,9 @@ void TCP_Update(void)
 
 static error_msg TCP_TimoutRetransmit(void)	//jira: CAE_MCU8-6056
 {
-    // doesn't compile
+    //INFO: mcc auto generated does not compile
     //currentTCB->txBufferPtr -= tcpDataLength;
+    //txBufferPtrForRetransmit = currentTCB->txBufferPtr;
     txBufferPtrForRetransmit = currentTCB->txBufferPtr - tcpDataLength;
     currentTCB->txBufferPtr = txBufferPtrForRetransmit;
     bytesToSendForRetransmit = tcpDataLength;

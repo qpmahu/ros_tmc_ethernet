@@ -1,20 +1,20 @@
 /**
-  EUSART1 Generated Driver API Header File
+  EUSART Generated Driver API Header File
 
   @Company
     Microchip Technology Inc.
 
   @File Name
-    eusart1.h
+    eusart.h
 
   @Summary
-    This is the generated header file for the EUSART1 driver using PIC10 / PIC12 / PIC16 / PIC18 MCUs
+    This is the generated header file for the EUSART driver using PIC10 / PIC12 / PIC16 / PIC18 MCUs
 
   @Description
-    This header file provides APIs for driver for EUSART1.
+    This header file provides APIs for driver for EUSART.
     Generation Information :
         Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.3
-        Device            :  PIC18F24K50
+        Device            :  PIC18F26K20
         Driver Version    :  2.1.0
     The generated drivers are tested against the following:
         Compiler          :  XC8 2.20 and above
@@ -44,8 +44,8 @@
     SOFTWARE.
 */
 
-#ifndef EUSART1_H
-#define EUSART1_H
+#ifndef EUSART_H
+#define EUSART_H
 
 /**
   Section: Included Files
@@ -66,7 +66,7 @@
   Section: Macro Declarations
 */
 
-#define EUSART1_DataReady  (EUSART1_is_rx_ready())
+#define EUSART_DataReady  (EUSART_is_rx_ready())
 
 /**
   Section: Data Type Definitions
@@ -80,27 +80,27 @@ typedef union {
         unsigned reserved : 5;
     };
     uint8_t status;
-}eusart1_status_t;
+}eusart_status_t;
 
 /**
  Section: Global variables
  */
-extern volatile uint8_t eusart1TxBufferRemaining;
-extern volatile uint8_t eusart1RxCount;
+extern volatile uint8_t eusartTxBufferRemaining;
+extern volatile uint8_t eusartRxCount;
 
 /**
-  Section: EUSART1 APIs
+  Section: EUSART APIs
 */
-extern void (*EUSART1_TxDefaultInterruptHandler)(void);
-extern void (*EUSART1_RxDefaultInterruptHandler)(void);
+extern void (*EUSART_TxDefaultInterruptHandler)(void);
+extern void (*EUSART_RxDefaultInterruptHandler)(void);
 
 /**
   @Summary
-    Initialization routine that takes inputs from the EUSART1 GUI.
+    Initialization routine that takes inputs from the EUSART GUI.
 
   @Description
-    This routine initializes the EUSART1 driver.
-    This routine must be called before any other EUSART1 routine is called.
+    This routine initializes the EUSART driver.
+    This routine must be called before any other EUSART routine is called.
 
   @Preconditions
     None
@@ -114,29 +114,29 @@ extern void (*EUSART1_RxDefaultInterruptHandler)(void);
   @Comment
     
 */
-void EUSART1_Initialize(void);
+void EUSART_Initialize(void);
 
 /**
   @Summary
-    Checks if the EUSART1 transmitter is ready to transmit data
+    Checks if the EUSART transmitter is ready to transmit data
 
   @Description
-    This routine checks if EUSART1 transmitter is ready 
+    This routine checks if EUSART transmitter is ready 
     to accept and transmit data byte
 
   @Preconditions
-    EUSART1_Initialize() function should have been called
+    EUSART_Initialize() function should have been called
     before calling this function.
-    EUSART1 transmitter should be enabled before calling 
+    EUSART transmitter should be enabled before calling 
     this function
 
   @Param
     None
 
   @Returns
-    Status of EUSART1 transmitter
-    TRUE: EUSART1 transmitter is ready
-    FALSE: EUSART1 transmitter is not ready
+    Status of EUSART transmitter
+    TRUE: EUSART transmitter is ready
+    FALSE: EUSART transmitter is not ready
     
   @Example
     <code>
@@ -150,41 +150,41 @@ void EUSART1_Initialize(void);
         while(1)
         {
             // Logic to echo received data
-            if(EUSART1_is_rx_ready())
+            if(EUSART_is_rx_ready())
             {
                 rxData = UART1_Read();
-                if(EUSART1_is_tx_ready())
+                if(EUSART_is_tx_ready())
                 {
-                    EUSART1Write(rxData);
+                    EUSARTWrite(rxData);
                 }
             }
         }
     }
     </code>
 */
-bool EUSART1_is_tx_ready(void);
+bool EUSART_is_tx_ready(void);
 
 /**
   @Summary
-    Checks if the EUSART1 receiver ready for reading
+    Checks if the EUSART receiver ready for reading
 
   @Description
-    This routine checks if EUSART1 receiver has received data 
+    This routine checks if EUSART receiver has received data 
     and ready to be read
 
   @Preconditions
-    EUSART1_Initialize() function should be called
+    EUSART_Initialize() function should be called
     before calling this function
-    EUSART1 receiver should be enabled before calling this 
+    EUSART receiver should be enabled before calling this 
     function
 
   @Param
     None
 
   @Returns
-    Status of EUSART1 receiver
-    TRUE: EUSART1 receiver is ready for reading
-    FALSE: EUSART1 receiver is not ready for reading
+    Status of EUSART receiver
+    TRUE: EUSART receiver is ready for reading
+    FALSE: EUSART receiver is not ready for reading
     
   @Example
     <code>
@@ -198,38 +198,38 @@ bool EUSART1_is_tx_ready(void);
         while(1)
         {
             // Logic to echo received data
-            if(EUSART1_is_rx_ready())
+            if(EUSART_is_rx_ready())
             {
                 rxData = UART1_Read();
-                if(EUSART1_is_tx_ready())
+                if(EUSART_is_tx_ready())
                 {
-                    EUSART1_Write(rxData);
+                    EUSART_Write(rxData);
                 }
             }
         }
     }
     </code>
 */
-bool EUSART1_is_rx_ready(void);
+bool EUSART_is_rx_ready(void);
 
 /**
   @Summary
-    Checks if EUSART1 data is transmitted
+    Checks if EUSART data is transmitted
 
   @Description
     This function return the status of transmit shift register
 
   @Preconditions
-    EUSART1_Initialize() function should be called
+    EUSART_Initialize() function should be called
     before calling this function
-    EUSART1 transmitter should be enabled and EUSART1_Write
+    EUSART transmitter should be enabled and EUSART_Write
     should be called before calling this function
 
   @Param
     None
 
   @Returns
-    Status of EUSART1 receiver
+    Status of EUSART receiver
     TRUE: Data completely shifted out if the USART shift register
     FALSE: Data is not completely shifted out of the shift register
     
@@ -244,12 +244,12 @@ bool EUSART1_is_rx_ready(void);
         
         while(1)
         {
-            if(EUSART1_is_tx_ready())
+            if(EUSART_is_tx_ready())
             {
 				LED_0_SetHigh();
-                EUSART1Write(rxData);
+                EUSARTWrite(rxData);
             }
-			if(EUSART1_is_tx_done()
+			if(EUSART_is_tx_done()
             {
                 LED_0_SetLow();
             }
@@ -257,7 +257,7 @@ bool EUSART1_is_rx_ready(void);
     }
     </code>
 */
-bool EUSART1_is_tx_done(void);
+bool EUSART_is_tx_done(void);
 
 /**
   @Summary
@@ -267,7 +267,7 @@ bool EUSART1_is_tx_done(void);
     This routine gets the error status of the last read byte.
 
   @Preconditions
-    EUSART1_Initialize() function should have been called
+    EUSART_Initialize() function should have been called
     before calling this function. The returned value is only
     updated after a read is called.
 
@@ -282,7 +282,7 @@ bool EUSART1_is_tx_done(void);
     void main(void)
     {
         volatile uint8_t rxData;
-        volatile eusart1_status_t rxStatus;
+        volatile eusart_status_t rxStatus;
         
         // Initialize the device
         SYSTEM_Initialize();
@@ -293,10 +293,10 @@ bool EUSART1_is_tx_done(void);
         while(1)
         {
             // Logic to echo received data
-            if(EUSART1_is_rx_ready())
+            if(EUSART_is_rx_ready())
             {
-                rxData = EUSART1_Read();
-                rxStatus = EUSART1_get_last_status();
+                rxData = EUSART_Read();
+                rxStatus = EUSART_get_last_status();
                 if(rxStatus.ferr){
                     LED_0_SetHigh();
                 }
@@ -305,17 +305,17 @@ bool EUSART1_is_tx_done(void);
     }
     </code>
  */
-eusart1_status_t EUSART1_get_last_status(void);
+eusart_status_t EUSART_get_last_status(void);
 
 /**
   @Summary
-    Read a byte of data from the EUSART1.
+    Read a byte of data from the EUSART.
 
   @Description
-    This routine reads a byte of data from the EUSART1.
+    This routine reads a byte of data from the EUSART.
 
   @Preconditions
-    EUSART1_Initialize() function should have been called
+    EUSART_Initialize() function should have been called
     before calling this function. The transfer status should be checked to see
     if the receiver is not empty before calling this function.
 
@@ -325,27 +325,27 @@ eusart1_status_t EUSART1_get_last_status(void);
   @Returns
     A data byte received by the driver.
 */
-uint8_t EUSART1_Read(void);
+uint8_t EUSART_Read(void);
 
  /**
   @Summary
-    Writes a byte of data to the EUSART1.
+    Writes a byte of data to the EUSART.
 
   @Description
-    This routine writes a byte of data to the EUSART1.
+    This routine writes a byte of data to the EUSART.
 
   @Preconditions
-    EUSART1_Initialize() function should have been called
+    EUSART_Initialize() function should have been called
     before calling this function. The transfer status should be checked to see
     if transmitter is not busy before calling this function.
 
   @Param
-    txData  - Data byte to write to the EUSART1
+    txData  - Data byte to write to the EUSART
 
   @Returns
     None
 */
-void EUSART1_Write(uint8_t txData);
+void EUSART_Write(uint8_t txData);
 
 /**
   @Summary
@@ -357,7 +357,7 @@ void EUSART1_Write(uint8_t txData);
     transmitter needs to be maintained in a non polled manner.
 
   @Preconditions
-    EUSART1_Initialize() function should have been called
+    EUSART_Initialize() function should have been called
     for the ISR to execute correctly.
 
   @Param
@@ -366,7 +366,7 @@ void EUSART1_Write(uint8_t txData);
   @Returns
     None
 */
-void EUSART1_Transmit_ISR(void);
+void EUSART_Transmit_ISR(void);
 
 /**
   @Summary
@@ -378,7 +378,7 @@ void EUSART1_Transmit_ISR(void);
     receiver needs to be maintained in a non polled manner.
 
   @Preconditions
-    EUSART1_Initialize() function should have been called
+    EUSART_Initialize() function should have been called
     for the ISR to execute correctly.
 
   @Param
@@ -387,7 +387,7 @@ void EUSART1_Transmit_ISR(void);
   @Returns
     None
 */
-void EUSART1_Receive_ISR(void);
+void EUSART_Receive_ISR(void);
 
 /**
   @Summary
@@ -399,7 +399,7 @@ void EUSART1_Receive_ISR(void);
     ISR to maintain normal behavior
 
   @Preconditions
-    EUSART1_Initialize() function should have been called
+    EUSART_Initialize() function should have been called
     for the ISR to execute correctly.
 
   @Param
@@ -408,17 +408,17 @@ void EUSART1_Receive_ISR(void);
   @Returns
     None
 */
-void EUSART1_RxDataHandler(void);
+void EUSART_RxDataHandler(void);
 
 /**
   @Summary
-    Set EUSART1 Framing Error Handler
+    Set EUSART Framing Error Handler
 
   @Description
-    This API sets the function to be called upon EUSART1 framing error
+    This API sets the function to be called upon EUSART framing error
 
   @Preconditions
-    Initialize  the EUSART1 before calling this API
+    Initialize  the EUSART before calling this API
 
   @Param
     Address of function to be set as framing error handler
@@ -426,17 +426,17 @@ void EUSART1_RxDataHandler(void);
   @Returns
     None
 */
-void EUSART1_SetFramingErrorHandler(void (* interruptHandler)(void));
+void EUSART_SetFramingErrorHandler(void (* interruptHandler)(void));
 
 /**
   @Summary
-    Set EUSART1 Overrun Error Handler
+    Set EUSART Overrun Error Handler
 
   @Description
-    This API sets the function to be called upon EUSART1 overrun error
+    This API sets the function to be called upon EUSART overrun error
 
   @Preconditions
-    Initialize  the EUSART1 module before calling this API
+    Initialize  the EUSART module before calling this API
 
   @Param
     Address of function to be set as overrun error handler
@@ -444,17 +444,17 @@ void EUSART1_SetFramingErrorHandler(void (* interruptHandler)(void));
   @Returns
     None
 */
-void EUSART1_SetOverrunErrorHandler(void (* interruptHandler)(void));
+void EUSART_SetOverrunErrorHandler(void (* interruptHandler)(void));
 
 /**
   @Summary
-    Set EUSART1 Error Handler
+    Set EUSART Error Handler
 
   @Description
-    This API sets the function to be called upon EUSART1 error
+    This API sets the function to be called upon EUSART error
 
   @Preconditions
-    Initialize  the EUSART1 module before calling this API
+    Initialize  the EUSART module before calling this API
 
   @Param
     Address of function to be set as error handler
@@ -462,7 +462,7 @@ void EUSART1_SetOverrunErrorHandler(void (* interruptHandler)(void));
   @Returns
     None
 */
-void EUSART1_SetErrorHandler(void (* interruptHandler)(void));
+void EUSART_SetErrorHandler(void (* interruptHandler)(void));
 
 /**
   @Summary
@@ -473,7 +473,7 @@ void EUSART1_SetErrorHandler(void (* interruptHandler)(void));
     called when the transmit interrupt needs servicing.
 
   @Preconditions
-    EUSART1_Initialize() function should have been called
+    EUSART_Initialize() function should have been called
     for the ISR to execute correctly.
 
   @Param
@@ -482,7 +482,7 @@ void EUSART1_SetErrorHandler(void (* interruptHandler)(void));
   @Returns
     None
 */
-void EUSART1_SetTxInterruptHandler(void (* interruptHandler)(void));
+void EUSART_SetTxInterruptHandler(void (* interruptHandler)(void));
 
 /**
   @Summary
@@ -493,7 +493,7 @@ void EUSART1_SetTxInterruptHandler(void (* interruptHandler)(void));
     called when the receive interrupt needs servicing.
 
   @Preconditions
-    EUSART1_Initialize() function should have been called
+    EUSART_Initialize() function should have been called
     for the ISR to execute correctly.
 
   @Param
@@ -502,7 +502,7 @@ void EUSART1_SetTxInterruptHandler(void (* interruptHandler)(void));
   @Returns
     None
 */
-void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
+void EUSART_SetRxInterruptHandler(void (* interruptHandler)(void));
 
 #ifdef __cplusplus  // Provide C++ Compatibility
 
@@ -510,7 +510,7 @@ void EUSART1_SetRxInterruptHandler(void (* interruptHandler)(void));
 
 #endif
 
-#endif  // EUSART1_H
+#endif  // EUSART_H
 /**
  End of File
 */

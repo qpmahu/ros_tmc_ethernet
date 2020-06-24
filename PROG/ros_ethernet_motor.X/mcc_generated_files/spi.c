@@ -1,20 +1,20 @@
 /**
-  SPI1 Generated Driver File
+  SPI Generated Driver File
 
   @Company
     Microchip Technology Inc.
 
   @File Name
-    spi1.c
+    spi.c
 
   @Summary
-    This is the generated driver implementation file for the SPI1 driver using PIC10 / PIC12 / PIC16 / PIC18 MCUs
+    This is the generated driver implementation file for the SPI driver using PIC10 / PIC12 / PIC16 / PIC18 MCUs
 
   @Description
-    This header file provides implementations for driver APIs for SPI1.
+    This header file provides implementations for driver APIs for SPI.
     Generation Information :
         Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.3
-        Device            :  PIC18F24K50
+        Device            :  PIC18F26K20
         Driver Version    :  1.0.0
     The generated drivers are tested against the following:
         Compiler          :  XC8 2.20 and above or later
@@ -44,7 +44,7 @@
     SOFTWARE.
 */
 
-#include "spi1.h"
+#include "spi.h"
 #include <xc.h>
 
 typedef struct { 
@@ -52,89 +52,89 @@ typedef struct {
     uint8_t stat;
     uint8_t add;
     uint8_t operation;
-} spi1_configuration_t;
+} spi_configuration_t;
 
 //con1 == SSPxCON1, stat == SSPxSTAT, add == SSPxADD, operation == Master/Slave
-static const spi1_configuration_t spi1_configuration[] = {   
-    { 0xa, 0xc0, 0x13, 0 },
+static const spi_configuration_t spi_configuration[] = {   
+    { 0x0, 0xc0, 0x0, 0 },
     { 0xa, 0xc0, 0x1, 0 }
 };
 
-void SPI1_Initialize(void)
+void SPI_Initialize(void)
 {
     //SPI setup
-    SSP1STAT = 0xC0;
-    SSP1CON1 = 0x0A;
-    SSP1ADD = 0x13;
-    TRISBbits.TRISB1 = 0;
-    SSP1CON1bits.SSPEN = 0;
+    SSPSTAT = 0xC0;
+    SSPCON1 = 0x00;
+    SSPADD = 0x00;
+    TRISCbits.TRISC3 = 0;
+    SSPCON1bits.SSPEN = 0;
 }
 
-bool SPI1_Open(spi1_modes_t spi1UniqueConfiguration)
+bool SPI_Open(spi_modes_t spiUniqueConfiguration)
 {
-    if(!SSP1CON1bits.SSPEN)
+    if(!SSPCON1bits.SSPEN)
     {
-        SSP1STAT = spi1_configuration[spi1UniqueConfiguration].stat;
-        SSP1CON1 = spi1_configuration[spi1UniqueConfiguration].con1;
-        SSP1CON2 = 0x00;
-        SSP1ADD  = spi1_configuration[spi1UniqueConfiguration].add;
-        TRISBbits.TRISB1 = spi1_configuration[spi1UniqueConfiguration].operation;
-        SSP1CON1bits.SSPEN = 1;
+        SSPSTAT = spi_configuration[spiUniqueConfiguration].stat;
+        SSPCON1 = spi_configuration[spiUniqueConfiguration].con1;
+        SSPCON2 = 0x00;
+        SSPADD  = spi_configuration[spiUniqueConfiguration].add;
+        TRISCbits.TRISC3 = spi_configuration[spiUniqueConfiguration].operation;
+        SSPCON1bits.SSPEN = 1;
         return true;
     }
     return false;
 }
 
-void SPI1_Close(void)
+void SPI_Close(void)
 {
-    SSP1CON1bits.SSPEN = 0;
+    SSPCON1bits.SSPEN = 0;
 }
 
-uint8_t SPI1_ExchangeByte(uint8_t data)
+uint8_t SPI_ExchangeByte(uint8_t data)
 {
-    SSP1BUF = data;
-    while(!PIR1bits.SSP1IF);
-    PIR1bits.SSP1IF = 0;
-    return SSP1BUF;
+    SSPBUF = data;
+    while(!PIR1bits.SSPIF);
+    PIR1bits.SSPIF = 0;
+    return SSPBUF;
 }
 
-void SPI1_ExchangeBlock(void *block, size_t blockSize)
+void SPI_ExchangeBlock(void *block, size_t blockSize)
 {
     uint8_t *data = block;
     while(blockSize--)
     {
-        SSP1BUF = *data;
-        while(!PIR1bits.SSP1IF);
-        PIR1bits.SSP1IF = 0;
-        *data++ = SSP1BUF;
+        SSPBUF = *data;
+        while(!PIR1bits.SSPIF);
+        PIR1bits.SSPIF = 0;
+        *data++ = SSPBUF;
     }
 }
 
 // Half Duplex SPI Functions
-void SPI1_WriteBlock(void *block, size_t blockSize)
+void SPI_WriteBlock(void *block, size_t blockSize)
 {
     uint8_t *data = block;
     while(blockSize--)
     {
-        SPI1_ExchangeByte(*data++);
+        SPI_ExchangeByte(*data++);
     }
 }
 
-void SPI1_ReadBlock(void *block, size_t blockSize)
+void SPI_ReadBlock(void *block, size_t blockSize)
 {
     uint8_t *data = block;
     while(blockSize--)
     {
-        *data++ = SPI1_ExchangeByte(0);
+        *data++ = SPI_ExchangeByte(0);
     }
 }
 
-void SPI1_WriteByte(uint8_t byte)
+void SPI_WriteByte(uint8_t byte)
 {
-    SSP1BUF = byte;
+    SSPBUF = byte;
 }
 
-uint8_t SPI1_ReadByte(void)
+uint8_t SPI_ReadByte(void)
 {
-    return SSP1BUF;
+    return SSPBUF;
 }

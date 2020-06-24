@@ -14,7 +14,7 @@
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
         Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.3
-        Device            :  PIC18F24K50
+        Device            :  PIC18F26K20
         Driver Version    :  2.00
     The generated drivers are tested against the following:
         Compiler          :  XC8 2.20 and above or later
@@ -43,7 +43,6 @@
     OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
     SOFTWARE.
 */
-
 #include "mcc.h"
 
 
@@ -51,32 +50,28 @@ void SYSTEM_Initialize(void)
 {
 
     INTERRUPT_Initialize();
-    SPI1_Initialize();
+    SPI_Initialize();
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
-    ECCP1_Initialize();
     PWM2_Initialize();
-    TMR3_Initialize();
     TMR2_Initialize();
     TMR1_Initialize();
-    EUSART1_Initialize();
+    EUSART_Initialize();
     Network_Init();
 }
 
 void OSCILLATOR_Initialize(void)
 {
-    // SCS FOSC; IDLEN disabled; IRCF 16MHz; 
-    OSCCON = 0x70;
-    // INTSRC INTRC_31_25KHz; PLLEN disabled; PRISD disabled; SOSCGO disabled; 
-    OSCCON2 = 0x00;
-    // SPLLMULT 3xPLL; TUN 0; 
-    OSCTUNE = 0x80;
-    // ACTSRC SOSC; ACTUD enabled; ACTEN disabled; 
-    ACTCON = 0x00;
+    // SCS FOSC; OSTS intosc; IRCF 8MHz_HFINTOSC/2; IDLEN disabled; 
+    OSCCON = 0x60;
+    // INTSRC disabled; PLLEN enabled; TUN 0; 
+    OSCTUNE = 0x40;
     // Wait for PLL to stabilize
-    while(PLLRDY == 0)
+/*
+    while(PLLR == 0)
     {
     }
+*/
 }
 
 

@@ -14,7 +14,7 @@
     This source file provides implementations for driver APIs for PWM2.
     Generation Information :
         Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.3
-        Device            :  PIC18F24K50
+        Device            :  PIC18F26K20
         Driver Version    :  2.01
     The generated drivers are tested against the following:
         Compiler          :  XC8 2.20 and above
@@ -55,7 +55,7 @@
   Section: Macro Declarations
 */
 
-#define PWM2_INITIALIZE_DUTY_VALUE    0
+#define PWM2_INITIALIZE_DUTY_VALUE    818
 
 /**
   Section: PWM Module APIs
@@ -65,11 +65,11 @@ void PWM2_Initialize(void)
 {
     // Set the PWM2 to the options selected in the User Interface
 	
-	// CCP2M PWM; DC2B 0; 
-	CCP2CON = 0x0C;    
+	// CCP2M PWM; DC2B 2; 
+	CCP2CON = 0x2C;    
 	
-	// CCPR2L 0; 
-	CCPR2L = 0x00;    
+	// CCPR2L 204; 
+	CCPR2L = 0xCC;    
 	
 	// CCPR2H 0; 
 	CCPR2H = 0x00;    
