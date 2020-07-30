@@ -15,13 +15,8 @@
     For individual peripheral handlers please see the peripheral driver for
     all modules selected in the GUI.
     Generation Information :
-<<<<<<< HEAD
         Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.4
         Device            :  PIC18F24K50
-=======
-        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.3
-        Device            :  PIC18F26K20
->>>>>>> origin/master
         Driver Version    :  2.03
     The generated drivers are tested against the following:
         Compiler          :  XC8 2.20 and above or later

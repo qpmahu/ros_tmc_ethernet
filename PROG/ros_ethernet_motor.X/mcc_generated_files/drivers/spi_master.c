@@ -26,19 +26,27 @@
 
 #include "spi_master.h"
 
+bool MASTER0_open(void);
 bool MAC_open(void);
 
 const spi_master_functions_t spiMaster[] = {   
-    { SPI_Close, MAC_open, SPI_ExchangeByte, SPI_ExchangeBlock, SPI_WriteBlock, SPI_ReadBlock, SPI_WriteByte, SPI_ReadByte, NULL, NULL }
+    { SPI1_Close, MASTER0_open, SPI1_ExchangeByte, SPI1_ExchangeBlock, SPI1_WriteBlock, SPI1_ReadBlock, SPI1_WriteByte, SPI1_ReadByte, NULL, NULL },
+    { SPI1_Close, MAC_open, SPI1_ExchangeByte, SPI1_ExchangeBlock, SPI1_WriteBlock, SPI1_ReadBlock, SPI1_WriteByte, SPI1_ReadByte, NULL, NULL }
 };
 
+bool MASTER0_open(void){
+    return SPI1_Open(MASTER0_CONFIG);
+}
+
 bool MAC_open(void){
-    return SPI_Open(MAC_CONFIG);
+    return SPI1_Open(MAC_CONFIG);
 }
 
 //This function serves keep backwards compatibility with older api users
 bool spi_master_open(spi_master_configurations_t config){
     switch(config){
+        case MASTER0:
+            return MASTER0_open();
         case MAC:
             return MAC_open();
         default:

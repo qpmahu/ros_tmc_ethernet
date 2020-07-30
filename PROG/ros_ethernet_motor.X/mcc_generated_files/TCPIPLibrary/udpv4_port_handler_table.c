@@ -1,17 +1,17 @@
 /**
-  MAC Address Header File
+  UDP protocol v4 implementation
 	
   Company:
     Microchip Technology Inc.
 
   File Name:
-    mac_address.h
+    udpv4_port_handler_table.c
 
   Summary:
-    Public Interface definition for MAC Address access.
+     This is the implementation of UDP version 4 protocol
 
   Description:
-    This files include definitions of public interface for accessing the MAC Address.
+    This source file provides the implementation of the API for the UDP v4 protocol.
 
  */
 
@@ -37,30 +37,34 @@ MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE TER
 
 */
 
-#ifndef MAC_ADDRESS_H
-#define	MAC_ADDRESS_H
+#include <xc.h>
+#include <stdio.h>
+#include "tcpip_config.h"
+#include "dhcp_client.h"
+#include "udpv4_port_handler_table.h"
 
-#include <stdint.h>
+const udp_handler_t UDP_CallBackTable[] = \
+{    
+    {68, DHCP_Handler},     
+};
 
-/******************************** MAC Address *********************************/
-#define MAC_ADDRESS {0x12,0x00,0xab,0x00,0x00,0x45}
+// ***************** Leave the stuff below this line alone *********************
 
-typedef union
+udp_table_iterator_t udp_table_getIterator(void)
 {
-    uint8_t mac_array[6];
-    struct { uint8_t byte1,byte2,byte3,byte4,byte5,byte6; } s;
-} mac48Address_t;
+    return (udp_table_iterator_t) UDP_CallBackTable;
+}
 
-typedef union
+udp_table_iterator_t udp_table_nextEntry(udp_table_iterator_t i)
 {
-    uint8_t mac_array[8];
-    struct { uint8_t byte1,byte2,byte3,byte4,byte5,byte6,byte7,byte8; } s;
-} mac64Address_t;
+    i ++;
+    if(i < UDP_CallBackTable + sizeof(UDP_CallBackTable))
+    {
+        return (udp_table_iterator_t) i;
+    }
+    else
+        return (udp_table_iterator_t) NULL;
+}
 
-extern const mac48Address_t broadcastMAC;
-extern mac48Address_t hostMacAddress;
 
-const mac48Address_t *MAC_getAddress(void);
-
-#endif	/* MAC_ADDRESS_H */
 

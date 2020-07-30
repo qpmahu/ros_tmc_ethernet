@@ -44,6 +44,8 @@ MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE TER
 #include "ipv4.h"
 #include "icmp.h"
 #include "arpv4.h"
+#include "udpv4.h"
+#include "udpv4_port_handler_table.h"
 #include "tcpip_types.h"
 #include "ethernet_driver.h"
 #include "log.h"
@@ -181,6 +183,14 @@ error_msg IPV4_Packet(void)
                         return ICMP_CHECKSUM_FAILS;
                     }
                 }
+                break;
+            case UDP_TCPIP:
+                // check the UDP header checksum                
+                logMsg("IPv4 RX UDP", LOG_INFO, LOG_DEST_CONSOLE);
+                length = ipv4Header.length - hdrLen;
+                cksm = IPV4_PseudoHeaderChecksum(length);//Calculate pseudo header checksum
+                cksm = ETH_RxComputeChecksum(length, cksm); //1's complement of pseudo header checksum + 1's complement of UDP header, data
+                UDP_Receive(cksm);
                 break;
             default:
                 ETH_Dump(ipv4Header.length);

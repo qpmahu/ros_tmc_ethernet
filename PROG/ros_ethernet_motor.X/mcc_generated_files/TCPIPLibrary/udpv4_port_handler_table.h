@@ -1,17 +1,17 @@
 /**
-  MAC Address Header File
+  UDP Port Handler header file
 	
   Company:
     Microchip Technology Inc.
 
   File Name:
-    mac_address.h
+    udpv4_port_handler_table.h
 
   Summary:
-    Public Interface definition for MAC Address access.
+    This is the header file udpv4.c
 
   Description:
-    This files include definitions of public interface for accessing the MAC Address.
+    This file consists of the UDP call back table.
 
  */
 
@@ -37,30 +37,23 @@ MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE TER
 
 */
 
-#ifndef MAC_ADDRESS_H
-#define	MAC_ADDRESS_H
 
-#include <stdint.h>
+#ifndef UDPV4_PORT_HANDLER_TABLE_H
+#define	UDPV4_PORT_HANDLER_TABLE_H
 
-/******************************** MAC Address *********************************/
-#define MAC_ADDRESS {0x12,0x00,0xab,0x00,0x00,0x45}
+#include "tcpip_types.h"
 
-typedef union
+typedef struct
 {
-    uint8_t mac_array[6];
-    struct { uint8_t byte1,byte2,byte3,byte4,byte5,byte6; } s;
-} mac48Address_t;
+    uint16_t portNumber;
+    ip_receive_function_ptr callBack;
+} udp_handler_t;
 
-typedef union
-{
-    uint8_t mac_array[8];
-    struct { uint8_t byte1,byte2,byte3,byte4,byte5,byte6,byte7,byte8; } s;
-} mac64Address_t;
+typedef  udp_handler_t * udp_table_iterator_t;
 
-extern const mac48Address_t broadcastMAC;
-extern mac48Address_t hostMacAddress;
+udp_table_iterator_t udp_table_getIterator(void);
+udp_table_iterator_t udp_table_nextEntry(udp_table_iterator_t i);
 
-const mac48Address_t *MAC_getAddress(void);
+#endif	/* UDPV4_PORT_HANDLER_TABLE_H */
 
-#endif	/* MAC_ADDRESS_H */
 

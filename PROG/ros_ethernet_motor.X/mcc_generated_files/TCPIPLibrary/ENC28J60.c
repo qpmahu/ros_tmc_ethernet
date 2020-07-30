@@ -47,14 +47,14 @@ MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE TER
 #include "../mcc.h"
 #include "ethernet_driver.h"
 #include "../drivers/spi_master.h"
-#include "../spi.h"
+#include "../spi1.h"
 #include "network.h"
 
-#define ETH_NCS_HIGH() do{LATC0 = 1;} while(0)  //Use the Ethernet Chip select as per your hardware specification here
-#define ETH_NCS_LOW()  do{LATC0 = 0;} while(0)  //Use the Ethernet Chip select as per your hardware specification here
+#define ETH_NCS_HIGH() do{LATB2 = 1;} while(0)  //Use the Ethernet Chip select as per your hardware specification here
+#define ETH_NCS_LOW()  do{LATB2 = 0;} while(0)  //Use the Ethernet Chip select as per your hardware specification here
         
-#define ETH_SPI_READ8()   SPI_ExchangeByte(0)
-#define ETH_SPI_WRITE8(a) SPI_ExchangeByte(a)
+#define ETH_SPI_READ8()   SPI1_ExchangeByte(0)
+#define ETH_SPI_WRITE8(a) SPI1_ExchangeByte(a)
 
 volatile ethernetDriver_t ethData;
 const mac48Address_t *eth_MAC;
@@ -318,7 +318,7 @@ void ETH_RemovePacket(txPacket_t* pPacket)
  */
 void ETH_CloseSPI(void)
 {
-    SPI_Close();
+    SPI1_Close();
 }
  
 /**

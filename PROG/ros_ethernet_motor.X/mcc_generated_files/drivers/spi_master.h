@@ -28,9 +28,10 @@
  */
 #include <stdint.h>
 #include <stdbool.h>
-#include "../spi.h"
+#include "../spi1.h"
 
 typedef enum { 
+    MASTER0,
     MAC
 } spi_master_configurations_t;
 
