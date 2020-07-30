@@ -28,7 +28,7 @@
  */
 #include <stdint.h>
 #include <stdbool.h>
-#include "../spi1.h"
+#include "../spi.h"
 
 typedef enum { 
     MAC

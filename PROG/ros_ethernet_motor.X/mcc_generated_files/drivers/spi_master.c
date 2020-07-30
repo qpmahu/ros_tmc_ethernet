@@ -29,11 +29,11 @@
 bool MAC_open(void);
 
 const spi_master_functions_t spiMaster[] = {   
-    { SPI1_Close, MAC_open, SPI1_ExchangeByte, SPI1_ExchangeBlock, SPI1_WriteBlock, SPI1_ReadBlock, SPI1_WriteByte, SPI1_ReadByte, NULL, NULL }
+    { SPI_Close, MAC_open, SPI_ExchangeByte, SPI_ExchangeBlock, SPI_WriteBlock, SPI_ReadBlock, SPI_WriteByte, SPI_ReadByte, NULL, NULL }
 };
 
 bool MAC_open(void){
-    return SPI1_Open(MAC_CONFIG);
+    return SPI_Open(MAC_CONFIG);
 }
 
 //This function serves keep backwards compatibility with older api users

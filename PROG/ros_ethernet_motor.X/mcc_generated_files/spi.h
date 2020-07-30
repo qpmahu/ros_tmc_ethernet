@@ -1,20 +1,20 @@
 /**
-  SPI1 Generated Driver API Header File
+  SPI Generated Driver API Header File
 
   @Company
     Microchip Technology Inc.
 
   @File Name
-    spi1.h
+    spi.h
 
   @Summary
-    This is the generated header file for the SPI1 driver using PIC10 / PIC12 / PIC16 / PIC18 MCUs
+    This is the generated header file for the SPI driver using PIC10 / PIC12 / PIC16 / PIC18 MCUs
 
   @Description
-    This header file provides APIs for driver for SPI1.
+    This header file provides APIs for driver for SPI.
     Generation Information :
-        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.4
-        Device            :  PIC18F24K50
+        Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.81.3
+        Device            :  PIC18F26K20
         Driver Version    :  1.0.0
     The generated drivers are tested against the following:
         Compiler          :  XC8 2.20 and above or later
@@ -44,8 +44,8 @@
     SOFTWARE.
 */
 
-#ifndef SPI1_H
-#define SPI1_H
+#ifndef SPI_H
+#define SPI_H
 
 /**
   Section: Included Files
@@ -57,18 +57,18 @@
 
 /* SPI interfaces */
 typedef enum { 
-    SPI1_DEFAULT,
+    SPI_DEFAULT,
     MAC_CONFIG
-} spi1_modes_t;
+} spi_modes_t;
 
-void SPI1_Initialize(void);
-bool SPI1_Open(spi1_modes_t spi1UniqueConfiguration);
-void SPI1_Close(void);
-uint8_t SPI1_ExchangeByte(uint8_t data);
-void SPI1_ExchangeBlock(void *block, size_t blockSize);
-void SPI1_WriteBlock(void *block, size_t blockSize);
-void SPI1_ReadBlock(void *block, size_t blockSize);
-void SPI1_WriteByte(uint8_t byte);
-uint8_t SPI1_ReadByte(void);
+void SPI_Initialize(void);
+bool SPI_Open(spi_modes_t spiUniqueConfiguration);
+void SPI_Close(void);
+uint8_t SPI_ExchangeByte(uint8_t data);
+void SPI_ExchangeBlock(void *block, size_t blockSize);
+void SPI_WriteBlock(void *block, size_t blockSize);
+void SPI_ReadBlock(void *block, size_t blockSize);
+void SPI_WriteByte(uint8_t byte);
+uint8_t SPI_ReadByte(void);
 
-#endif //SPI1_H
+#endif //SPI_H

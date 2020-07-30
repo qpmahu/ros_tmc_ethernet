@@ -9,6 +9,5 @@
 
 
 void ros_motor_ethernet(void) {
-    Network_Manage();
-    return;
-}
+
+    }
