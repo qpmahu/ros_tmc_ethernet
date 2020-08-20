@@ -6,9 +6,9 @@
             <name>ros_ethernet_motor</name>
             <creation-uuid>4dafdf8e-408d-4be9-807f-98cf6070ae25</creation-uuid>
             <make-project-type>0</make-project-type>
-            <c-extensions>c</c-extensions>
+            <c-extensions/>
             <cpp-extensions/>
-            <header-extensions>h</header-extensions>
+            <header-extensions/>
             <asminc-extensions/>
             <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects/>
